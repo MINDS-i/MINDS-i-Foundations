@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -18,6 +18,8 @@
 / Ground (black)  --| B   '-'   |-|-| Q |
 /                   ---------------------
 /***************************************************/
+
+namespace minds_i_sensors = minds_i_common::sensors;
 
 Servo steer, drive;
 
@@ -44,11 +46,11 @@ void loop() {
   //and finally check if the center sensor says to go strait, otherwise
   //don't change the desired direction
 
-  if (QTI(A0) < threshold) {
+  if (minds_i_sensors::QTI(A0) < threshold) {
     steer.write(45);
-  } else if (QTI(A2) < threshold) {
+  } else if (minds_i_sensors::QTI(A2) < threshold) {
     steer.write(135);
-  } else if (QTI(A1) < threshold) {
+  } else if (minds_i_sensors::QTI(A1) < threshold) {
     steer.write(90);
   }
 }

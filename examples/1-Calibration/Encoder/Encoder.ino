@@ -1,6 +1,6 @@
 #include <Servo.h>
-#include <MINDSi.h>
-#include "Encoder.h"
+#include <MINDS-i-Common.h>
+#include <MINDS-i-Common-Encoder.h>
 
 /***************************************************
 / Example provided by MINDS-i

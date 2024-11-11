@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -10,6 +10,8 @@
 / This example expects 2 servos in pins 4 and 5
 / and a ping sensor in pin 9
 /***************************************************/
+
+namespace minds_i_sensors = minds_i_common::sensors;
 
 Servo left, right;
 
@@ -26,7 +28,7 @@ void setup() {
 }
 
 void loop() {
-  if (getPing(9) < hazardDist) {
+  if (minds_i_sensors::getPing(9) < hazardDist) {
     //liberal coasting to prevent brownouts
     left.write(center);
     right.write(center);

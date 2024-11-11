@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -10,6 +10,8 @@
 / This example expects 2 servos in pins 4 and 5
 / and three QTI sensors in pins A0, A1, and A2
 /***************************************************/
+
+namespace minds_i_sensors = minds_i_common::sensors;
 
 Servo left, right;
 
@@ -38,9 +40,9 @@ void setup() {
 }
 
 void loop() {
-  bool left   = QTI(A0) > 120;
-  bool middle = QTI(A1) > 120;
-  bool right  = QTI(A2) > 120;
+  bool left   = minds_i_sensors::QTI(A0) > 120;
+  bool middle = minds_i_sensors::QTI(A1) > 120;
+  bool right  = minds_i_sensors::QTI(A2) > 120;
 
   if (left) {
     Lset = neutral + insideSpeed;

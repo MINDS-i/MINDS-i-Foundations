@@ -1,5 +1,5 @@
 #include <Servo.h>
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 
 /***************************************************
 / Example provided by MINDS-i

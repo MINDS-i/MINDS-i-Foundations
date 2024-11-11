@@ -1,4 +1,4 @@
-# MINDS-i
-Code to assist with running MINDSi robots
+# MINDS-i-Foundations
+Code used for the MINDS-i Foundations curriculum
 
-This library contains code for running all the sensors sold with MINDSi kits, and examples for each chassis
+This library contains code for learning the basics of programming and electronics using the MINDS-i platform. Intended to be used with the [MINDS-i Foundations](https://mindsieducation.com/collections/education-labs-curriculum/foundations-curriculum) curriculum.

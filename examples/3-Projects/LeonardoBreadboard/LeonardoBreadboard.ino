@@ -1,7 +1,7 @@
 #include <Wire.h>
 #include <SPI.h>
 #include <Servo.h>
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <LiquidCrystal_I2C.h>
 #include "logo.h"
 
@@ -9,6 +9,9 @@
  * For use with the NewLiquidCrystal library available here:
  * https://bitbucket.org/fmalpartida/new-liquidcrystal/downloads
  */
+
+namespace minds_i_comms = minds_i_common::comms;
+namespace minds_i_sensors = minds_i_common::sensors;
 
 const int I2C_ADDR = 0x27;
 const int BACKLIGHT_PIN = 3;
@@ -73,8 +76,8 @@ void setup(){
 	steer.attach(servoPins[1]);
 	drive.write(90);
 	steer.write(90);
-	getRadio(radioPins[0]);
-	getRadio(radioPins[1]);
+	minds_i_comms::getRadio(radioPins[0]);
+	minds_i_comms::getRadio(radioPins[1]);
 
 	pinMode(IRPins[0], INPUT);
 	pinMode(IRPins[1], INPUT);
@@ -182,9 +185,9 @@ void pingExpo(){
 	lcd.setCursor(0,3);
 	lcd.print("G");
 
-	int left = getPing(pingPins[0]);
-	int front = getPing(pingPins[1]);
-	int right = getPing(pingPins[2]);
+	int left = minds_i_sensors::getPing(pingPins[0]);
+	int front = minds_i_sensors::getPing(pingPins[1]);
+	int right = minds_i_sensors::getPing(pingPins[2]);
 
 	verticalBarGraph(1,5,  3,7, left/SCALE);
 	verticalBarGraph(1,9,  3,11, front/SCALE);

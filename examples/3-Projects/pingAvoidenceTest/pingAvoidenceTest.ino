@@ -1,5 +1,5 @@
 #include <Servo.h>
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 
 /***************************************************
 / Example provided by MINDS-i
@@ -12,6 +12,9 @@
 / override the radio input and turn the vehicle
 / away from the obstacle
 /***************************************************/
+
+namespace minds_i_comms = minds_i_common::comms;
+namespace minds_i_sensors = minds_i_common::sensors;
 
 const uint8_t  PingPin[] = {7, 8, 9, 10, 11}; //left to right
 const uint8_t ServoPin[] = {4, 5, 6};//drive, steer, backsteer
@@ -37,7 +40,7 @@ void setup() {
   delay(2000);
   Serial.begin(9600);
   uTime = millis();
-  getRadio(RadioPin[0]);
+  minds_i_comms::getRadio(RadioPin[0]);
 }
 
 void loop() {
@@ -49,7 +52,7 @@ void loop() {
 }
 
 void checkPing() {
-  ping[pIter] = getPing(PingPin[pIter]);
+  ping[pIter] = minds_i_sensors::getPing(PingPin[pIter]);
   pIter++;
   pIter = pIter % 5;
   if (ping[pIter] < warn[pIter]) oTime = millis();
@@ -70,7 +73,7 @@ void navigate() {
       oTime = 0;
     }
   } else {
-    double inputAngle = getRadio(RadioPin[1]) - 90;
+    double inputAngle = minds_i_comms::getRadio(RadioPin[1]) - 90;
     double x, y;
     x = ISTR * cos(toRad(inputAngle));
     y = ISTR * sin(toRad(inputAngle));
@@ -85,7 +88,7 @@ void navigate() {
 
     outputAngle = toDeg(atan2(y, x)) + 90;
     outputAngle = constrain(outputAngle, 45, 135);
-    output(getRadio(RadioPin[0]), outputAngle);
+    output(minds_i_comms::getRadio(RadioPin[0]), outputAngle);
   }
 }
 

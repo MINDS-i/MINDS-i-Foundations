@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -12,6 +12,8 @@
 / on pins 9,10, and 11
 /***************************************************/
 
+namespace minds_i_sensors = minds_i_common::sensors;
+
 void setup() {
   //start a serial connection
   Serial.begin(9600);
@@ -19,16 +21,16 @@ void setup() {
 
 void loop() {
   //send the value read by the ping sensor out serial
-  Serial.println( getPing(10) );
+  Serial.println(minds_i_sensors::getPing(10));
 
   //optional code for displaying three QTI sensors, make sure the previous code
   //is commented out when using the code below.
   /*
-  	Serial.print(getPing(9));
+  	Serial.print(minds_i_sensors::getPing(9));
   	Serial.print("\t"); //insert some tabs
-  	Serial.print(getPing(10));
+  	Serial.print(minds_i_sensors::getPing(10));
   	Serial.print("\t");
-  	Serial.println(getPing(11));
+  	Serial.println(minds_i_sensors::getPing(11));
   */
 
   // wait for potential echos to die down

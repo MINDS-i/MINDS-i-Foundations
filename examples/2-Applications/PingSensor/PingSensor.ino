@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -11,6 +11,8 @@
 / A servo plugged into pin 5
 / and a ping sensor in pin 10
 /***************************************************/
+
+namespace minds_i_sensors = minds_i_common::sensors;
 
 Servo drive, steer;
 
@@ -32,7 +34,7 @@ void setup() {
 
 void loop() {
   //if there is no room in front, stop
-  if (getPing(10) < 1500) {
+  if (minds_i_sensors::getPing(10) < 1500) {
     drive.write(90);
   } else {
     //otherwise go forward

@@ -1,5 +1,5 @@
 #include <Servo.h>
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 
 /***************************************************
 / Example provided by MINDS-i
@@ -12,6 +12,9 @@
 / and ping sensors in pins 9, 10, and 11
 / optionally, IR sensors in pins 12 and 13
 /***************************************************/
+
+namespace minds_i_sensors = minds_i_common::sensors;
+namespace minds_i_comms = minds_i_common::comms;
 
 const bool IR_ENABLED    = false;
 const int  CENTER        = 90;
@@ -39,7 +42,7 @@ void setup() {
 
   // start interrupts on pin 3 so pulses will be captured before isRadioOn
   // is first called
-  getRadio(3);
+  minds_i_comms::getRadio(3);
 
   steer(CENTER);
   drive.write(90);
@@ -54,9 +57,9 @@ void steer(int out) {
 
 void loop() {
   //this will give manual control if a radio is plugged in
-  if (isRadioOn(3)) {
-    drive.write(getRadio(2));
-    steer(getRadio(3));
+  if (minds_i_comms::isRadioOn(3)) {
+    drive.write(minds_i_comms::getRadio(2));
+    steer(minds_i_comms::getRadio(3));
   } else {
     autodrive();
   }
@@ -65,7 +68,7 @@ void loop() {
 void autodrive() {
   bool danger = false;
   for (int i = 0; i < 5; i++) {
-    ping[i] = getPing(PING_PINS[i]);
+    ping[i] = minds_i_sensors::getPing(PING_PINS[i]);
     if (ping[i] < HAZARD_DIST[i]) danger = true;
     delay(10);
   }
