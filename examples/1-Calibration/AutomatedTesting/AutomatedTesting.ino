@@ -2,7 +2,7 @@
 #include "Wire.h"
 
 #include "Servo.h"
-#include "MINDSi.h"
+#include <MINDS-i-Common.h>
 #include <EEPROM.h>
 #include "pins_arduino.h"
 
@@ -20,6 +20,9 @@
 / Ping Sensors
 / And reading/clearing EEPROM
 /*******************************************************/
+
+namespace minds_i_comms = minds_i_common::comms;
+namespace minds_i_sensors = minds_i_common::sensors;
 
 const int dQTIs[3] = {A0, A1, A2};
 const int dPing[3] = {9 , 10, 11};
@@ -121,7 +124,7 @@ void selfTest() {
   Serial.println("\nAttempting to get a reading from each sensor\n");
 
   for (int i = 0; i < 3; i++) {
-    if (getPing(dPing[i]) == 0) {
+    if (minds_i_sensors::getPing(dPing[i]) == 0) {
       Serial.print("Ping #");
       Serial.print(i);
       Serial.print(" on pin ");
@@ -135,7 +138,7 @@ void selfTest() {
   Serial.print("\n");
 
   for (int i = 0; i < 3; i++) {
-    int tmp = QTI(dQTIs[i]);
+    int tmp = minds_i_common::sensors::QTI(dQTIs[i]);
     if ( tmp == 10000 ) {
       Serial.print("QTI #");
       Serial.print(i);
@@ -264,13 +267,13 @@ int digitalIntRead(int pin) {
   return digitalRead(pin);
 }
 int simpleRadioRead(int pin) {
-  return getRadio(pin);
+  return minds_i_comms::getRadio(pin);
 }
 int getIntPing(int pin) {
-  return getPing(pin);
+  return minds_i_common::sensors::getPing(pin);
 }
 int getIntQTI(int pin) {
-  return QTI(pin);
+  return minds_i_common::sensors::QTI(pin);
 }
 
 void empty() {

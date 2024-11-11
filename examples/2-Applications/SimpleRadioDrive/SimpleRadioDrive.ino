@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -11,6 +11,8 @@
 / A servo plugged into pin 5
 / and a radio plugged into pins 2 and 3
 /***************************************************/
+
+namespace minds_i_comms = minds_i_common::comms;
 
 Servo drive, steer;
 int driveSig, steerSig;
@@ -30,8 +32,8 @@ void setup() {
 
 void loop() {
   //store the inbound radio value
-  driveSig = getRadio(2);
-  steerSig = getRadio(3);
+  driveSig = minds_i_comms::getRadio(2);
+  steerSig = minds_i_comms::getRadio(3);
 
   //set the ESC/servo to the inbound radio value
   drive.write( driveSig );

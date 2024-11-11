@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -19,6 +19,8 @@
 /                   ---------------------
 /***************************************************/
 
+namespace minds_i_sensors = minds_i_common::sensors;
+
 int val;
 
 void setup() {
@@ -28,16 +30,16 @@ void setup() {
 
 void loop() {
   //save the value read by the QTI sensor on analog pin 0; then send
-  val = QTI(A0);
+  val = minds_i_sensors::QTI(A0);
   Serial.println(val);
 
   //optional code for displaying three QTI sensors, make sure the previous code
   //is commented out when using the code below.
   /*
-  	Serial.print(QTI(A0));
+  	Serial.print(minds_i_sensors::QTI(A0));
   	Serial.print("\t"); //insert some tabs
-  	Serial.print(QTI(A1));
+  	Serial.print(minds_i_sensors::QTI(A1));
   	Serial.print("\t");
-  	Serial.println(QTI(A2));
+  	Serial.println(minds_i_sensors::QTI(A2));
   */
 }

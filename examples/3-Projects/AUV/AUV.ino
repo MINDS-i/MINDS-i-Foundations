@@ -1,5 +1,5 @@
 #include <Servo.h>
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 
 /***************************************************
 / Example provided by MINDS-i
@@ -12,6 +12,8 @@
 / and ping sensors in pins 9, 10, and 11
 / optionally, IR sensors in pins 12 and 13
 /***************************************************/
+
+namespace minds_i_sensors = minds_i_common::sensors;
 
 const bool IR_ENABLED    = false;
 const int  CENTER        = 90;
@@ -45,11 +47,11 @@ void steer(int out) {
 }
 
 void loop() {
-  int right = getPing(9);
+  int right = minds_i_sensors::getPing(9);
   delay(10);
-  int left  = getPing(11);
+  int left  = minds_i_sensors::getPing(11);
   delay(10);
-  int front = getPing(10);
+  int front = minds_i_sensors::getPing(10);
 
   if (	left  < HAZARD_DIST[0] ||
         front < HAZARD_DIST[1] ||

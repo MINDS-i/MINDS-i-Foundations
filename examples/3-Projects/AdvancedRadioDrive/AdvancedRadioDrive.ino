@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -12,6 +12,8 @@
 / and a radio plugged into pins 2 and 3
 /***************************************************/
 
+namespace minds_i_comms = minds_i_common::comms;
+
 Servo steer, drive;
 float driveOut, steerOut;
 float driveIn, steerIn;
@@ -22,7 +24,7 @@ void setup() {
 }
 
 void loop() {
-  if (isRadioOn(2)) {
+  if (minds_i_comms::isRadioOn(2)) {
     radioControl();
   } else {
     radioOff();
@@ -31,8 +33,8 @@ void loop() {
 
 void radioControl() {
   //exponential running average of radio signals to reduce noise
-  driveIn = (driveIn * .6) + (getRadio(2) * .4);
-  steerIn = (steerIn * .6) + (getRadio(3) * .4);
+  driveIn = (driveIn * .6) + (minds_i_comms::getRadio(2) * .4);
+  steerIn = (steerIn * .6) + (minds_i_comms::getRadio(3) * .4);
 
   driveOut = driveIn - 90;
   steerOut = steerIn - 90;

@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -11,6 +11,8 @@
 / two modes based on a radio switch plugged in to
 / pin 7
 /***************************************************/
+
+namespace minds_i_comms = minds_i_common::comms;
 
 Servo steer, drive;
 
@@ -25,7 +27,7 @@ void setup() {
 }
 
 void loop() {
-  if (getRadio(7) > 90) {
+  if (minds_i_comms::getRadio(7) > 90) {
     radioControl();
   } else {
     radioOff();

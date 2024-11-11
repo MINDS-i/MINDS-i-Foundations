@@ -1,4 +1,4 @@
-#include <MINDSi.h>
+#include <MINDS-i-Common.h>
 #include <Servo.h>
 
 /***************************************************
@@ -15,6 +15,8 @@
 / mode
 /***************************************************/
 
+namespace minds_i_comms = minds_i_common::comms;
+
 Servo steer, drive;
 
 void setup() {
@@ -26,13 +28,13 @@ void setup() {
 
   // start interrupts on pin 3 so pulses will be captured before isRadioOn
   // is first called
-  getRadio(3);
+  minds_i_comms::getRadio(3);
 
   delay(2000);
 }
 
 void loop() {
-  if (isRadioOn(3)) {
+  if (minds_i_comms::isRadioOn(3)) {
     radioControl();
   } else {
     radioOff();
