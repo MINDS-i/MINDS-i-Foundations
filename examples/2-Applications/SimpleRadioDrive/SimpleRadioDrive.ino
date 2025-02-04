@@ -18,24 +18,24 @@ Servo drive, steer;
 int driveSig, steerSig;
 
 void setup() {
-  //set a pin for the ESC/steering servo to use
-  drive.attach(4);
-  steer.attach(5);
+    // set a pin for the ESC/steering servo to use
+    drive.attach(4);
+    steer.attach(5);
 
-  //set the initial throttle/direction for the ESC/servo
-  drive.write(90);
-  steer.write(90);
+    // set the initial throttle/direction for the ESC/servo
+    drive.write(90);
+    steer.write(90);
 
-  //delay 2 seconds for arming
-  delay(2000);
+    // delay 2 seconds for arming
+    delay(2000);
 }
 
 void loop() {
-  //store the inbound radio value
-  driveSig = minds_i_comms::getRadio(2);
-  steerSig = minds_i_comms::getRadio(3);
+    // store the inbound radio value
+    driveSig = minds_i_comms::getRadio(2);
+    steerSig = minds_i_comms::getRadio(3);
 
-  //set the ESC/servo to the inbound radio value
-  drive.write( driveSig );
-  steer.write( steerSig );
+    // set the ESC/servo to the inbound radio value
+    drive.write(driveSig);
+    steer.write(steerSig);
 }

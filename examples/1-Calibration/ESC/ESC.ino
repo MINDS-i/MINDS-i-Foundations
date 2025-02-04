@@ -13,15 +13,14 @@
 Servo motor;
 
 void setup() {
-  //set a pin for a servo/ESC to use
-  motor.attach(4);
+    // set a pin for a servo/ESC to use
+    motor.attach(4);
 
-  //set the initial throttle
-  motor.write(90);
+    // set the initial throttle
+    motor.write(90);
 
-  //wait for 2 seconds to arm the ESC
-  delay(2000);
+    // wait for 2 seconds to arm the ESC
+    delay(2000);
 }
 
-void loop() {
-}
+void loop() {}

@@ -13,13 +13,13 @@
 int val;
 
 void setup() {
-  //start a serial connection
-  Serial.begin(9600);
+    // start a serial connection
+    Serial.begin(9600);
 }
 
 void loop() {
-  //read in the value on analog pin 0
-  val = analogRead(A0);
-  //send a string or value on the serial connection
-  Serial.println(val);
+    // read in the value on analog pin 0
+    val = analogRead(A0);
+    // send a string or value on the serial connection
+    Serial.println(val);
 }

@@ -16,26 +16,26 @@ Servo drive, steer;
 float Z;
 
 void setup() {
-  //set a pin for the ESC/steering servo to use
-  drive.attach(4);
-  steer.attach(5);
+    // set a pin for the ESC/steering servo to use
+    drive.attach(4);
+    steer.attach(5);
 
-  //set the initial throttle/direction for the ESC/servo
-  drive.write(90);
-  steer.write(90);
+    // set the initial throttle/direction for the ESC/servo
+    drive.write(90);
+    steer.write(90);
 
-  //delay 2 seconds for ESC arming
-  delay(2000);
+    // delay 2 seconds for ESC arming
+    delay(2000);
 }
 
 void loop() {
-  //store the value read
-  Z = analogRead(A2) / 1024;
+    // store the value read
+    Z = analogRead(A2) / 1024;
 
-  //if less than half of normal G's is read on the Z axis (up/down), stop
-  if (Z < downReading) {
-    drive.write(90);
-  } else {
-    drive.write(100);
-  }
+    // if less than half of normal G's is read on the Z axis (up/down), stop
+    if (Z < downReading) {
+        drive.write(90);
+    } else {
+        drive.write(100);
+    }
 }

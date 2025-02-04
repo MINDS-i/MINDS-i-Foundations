@@ -15,36 +15,35 @@ namespace minds_i_sensors = minds_i_common::sensors;
 
 Servo left, right;
 
-const int center     =  90;
+const int center = 90;
 const int hazardDist = 750;
 
 void setup() {
-  left.attach(5);
-  right.attach(4);
+    left.attach(5);
+    right.attach(4);
 
-  //driving straight
-  left.write(0);
-  right.write(180);
+    // driving straight
+    left.write(0);
+    right.write(180);
 }
 
 void loop() {
-  if (minds_i_sensors::getPing(9) < hazardDist) {
-    //liberal coasting to prevent brownouts
-    left.write(center);
-    right.write(center);
-    delay(500);
+    if (minds_i_sensors::getPing(9) < hazardDist) {
+        // liberal coasting to prevent brownouts
+        left.write(center);
+        right.write(center);
+        delay(500);
 
-    left.write(180);
-    right.write(center);
-    delay(1000);
+        left.write(180);
+        right.write(center);
+        delay(1000);
 
-    left.write(center);
-    right.write(center);
-    delay(250);
-  } else {
-    //resume driving straight
-    left.write(0);
-    right.write(180);
-  }
-
+        left.write(center);
+        right.write(center);
+        delay(250);
+    } else {
+        // resume driving straight
+        left.write(0);
+        right.write(180);
+    }
 }

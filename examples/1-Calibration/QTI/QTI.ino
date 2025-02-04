@@ -24,22 +24,22 @@ namespace minds_i_sensors = minds_i_common::sensors;
 int val;
 
 void setup() {
-  //start a serial connection
-  Serial.begin(9600);
+    // start a serial connection
+    Serial.begin(9600);
 }
 
 void loop() {
-  //save the value read by the QTI sensor on analog pin 0; then send
-  val = minds_i_sensors::QTI(A0);
-  Serial.println(val);
+    // save the value read by the QTI sensor on analog pin 0; then send
+    val = minds_i_sensors::QTI(A0);
+    Serial.println(val);
 
-  //optional code for displaying three QTI sensors, make sure the previous code
-  //is commented out when using the code below.
-  /*
-  	Serial.print(minds_i_sensors::QTI(A0));
-  	Serial.print("\t"); //insert some tabs
-  	Serial.print(minds_i_sensors::QTI(A1));
-  	Serial.print("\t");
-  	Serial.println(minds_i_sensors::QTI(A2));
-  */
+    // optional code for displaying three QTI sensors, make sure the previous code
+    // is commented out when using the code below.
+    /*
+      Serial.print(minds_i_sensors::QTI(A0));
+      Serial.print("\t"); //insert some tabs
+      Serial.print(minds_i_sensors::QTI(A1));
+      Serial.print("\t");
+      Serial.println(minds_i_sensors::QTI(A2));
+    */
 }

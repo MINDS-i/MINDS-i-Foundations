@@ -11,14 +11,11 @@
 Servo myservo;
 
 void setup() {
-  //set a pin for a servo/ESC to use
-  myservo.attach(5);
+    // set a pin for a servo/ESC to use
+    myservo.attach(5);
 
-  //set the output to 90 degrees (center)
-  myservo.write (90);
+    // set the output to 90 degrees (center)
+    myservo.write(90);
 }
 
-void loop() {
-}
-
-
+void loop() {}
