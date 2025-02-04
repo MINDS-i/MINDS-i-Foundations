@@ -15,24 +15,24 @@
 namespace minds_i_sensors = minds_i_common::sensors;
 
 void setup() {
-  //start a serial connection
-  Serial.begin(9600);
+    // start a serial connection
+    Serial.begin(9600);
 }
 
 void loop() {
-  //send the value read by the ping sensor out serial
-  Serial.println(minds_i_sensors::getPing(10));
+    // send the value read by the ping sensor out serial
+    Serial.println(minds_i_sensors::getPing(10));
 
-  //optional code for displaying three QTI sensors, make sure the previous code
-  //is commented out when using the code below.
-  /*
-  	Serial.print(minds_i_sensors::getPing(9));
-  	Serial.print("\t"); //insert some tabs
-  	Serial.print(minds_i_sensors::getPing(10));
-  	Serial.print("\t");
-  	Serial.println(minds_i_sensors::getPing(11));
-  */
+    // optional code for displaying three QTI sensors, make sure the previous code
+    // is commented out when using the code below.
+    /*
+      Serial.print(minds_i_sensors::getPing(9));
+      Serial.print("\t"); //insert some tabs
+      Serial.print(minds_i_sensors::getPing(10));
+      Serial.print("\t");
+      Serial.println(minds_i_sensors::getPing(11));
+    */
 
-  // wait for potential echos to die down
-  delay(50);
+    // wait for potential echos to die down
+    delay(50);
 }

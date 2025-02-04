@@ -14,24 +14,24 @@
 float X, Y, Z;
 
 void setup() {
-  //start a serial connection
-  Serial.begin(9600);
+    // start a serial connection
+    Serial.begin(9600);
 }
 
 void loop() {
-  //read in the value on analog pin 0
-  X = analogRead(A0);
-  Y = analogRead(A1);
-  Z = analogRead(A2);
+    // read in the value on analog pin 0
+    X = analogRead(A0);
+    Y = analogRead(A1);
+    Z = analogRead(A2);
 
-  //send title and then value over serial
-  Serial.print("X:");
-  Serial.print(X);
-  Serial.print("\tY:"); // \t inserts a "tab"
-  Serial.print(Y);
-  Serial.print("\tZ:");
-  Serial.print(Z);
+    // send title and then value over serial
+    Serial.print("X:");
+    Serial.print(X);
+    Serial.print("\tY:"); // \t inserts a "tab"
+    Serial.print(Y);
+    Serial.print("\tZ:");
+    Serial.print(Z);
 
-  //shift down a line
-  Serial.println();
+    // shift down a line
+    Serial.println();
 }

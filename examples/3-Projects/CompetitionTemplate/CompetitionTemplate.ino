@@ -20,29 +20,27 @@ namespace minds_i_comms = minds_i_common::comms;
 Servo steer, drive;
 
 void setup() {
-  drive.attach(4);
-  steer.attach(5);
+    drive.attach(4);
+    steer.attach(5);
 
-  drive.write(90);
-  steer.write(90);
+    drive.write(90);
+    steer.write(90);
 
-  // start interrupts on pin 3 so pulses will be captured before isRadioOn
-  // is first called
-  minds_i_comms::getRadio(3);
+    // start interrupts on pin 3 so pulses will be captured before isRadioOn
+    // is first called
+    minds_i_comms::getRadio(3);
 
-  delay(2000);
+    delay(2000);
 }
 
 void loop() {
-  if (minds_i_comms::isRadioOn(3)) {
-    radioControl();
-  } else {
-    radioOff();
-  }
+    if (minds_i_comms::isRadioOn(3)) {
+        radioControl();
+    } else {
+        radioOff();
+    }
 }
 
-void radioControl() {
-}
+void radioControl() {}
 
-void radioOff() {
-}
+void radioOff() {}

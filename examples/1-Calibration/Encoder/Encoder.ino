@@ -1,6 +1,6 @@
-#include <Servo.h>
-#include <MINDS-i-Common.h>
 #include <MINDS-i-Common-Encoder.h>
+#include <MINDS-i-Common.h>
+#include <Servo.h>
 
 /***************************************************
 / Example provided by MINDS-i
@@ -19,26 +19,26 @@ float mph;
 
 const int encoderPins[2] = {2, 3};
 
-//Since these conversions vary based on measurements of the robot,
-//these must be calculated here
+// Since these conversions vary based on measurements of the robot,
+// these must be calculated here
 //(wheel Diameter*PI) * minutes per hour / (inches per mile * gear ratio)
-float RPMtoMPH = ((5. *PI) * 60.) / (63360.*(37. / 13.));
+float RPMtoMPH = ((5. * PI) * 60.) / (63360. * (37. / 13.));
 
 void setup() {
-  Serial.begin(9600);  //start a serial connection
-  encoder::begin(encoderPins[0], encoderPins[1]);
+    Serial.begin(9600); // start a serial connection
+    encoder::begin(encoderPins[0], encoderPins[1]);
 }
 
 void loop() {
-  rpm = encoder::getRPM();
-  rev = encoder::getRev();
-  mph = rpm * RPMtoMPH;
+    rpm = encoder::getRPM();
+    rev = encoder::getRev();
+    mph = rpm * RPMtoMPH;
 
-  Serial.print("RPM: ");
-  Serial.print(rpm);
-  Serial.print("\tMPH: ");
-  Serial.print(mph);
-  Serial.print("\tREV: ");
-  Serial.print(rev);
-  Serial.print("\n");
+    Serial.print("RPM: ");
+    Serial.print(rpm);
+    Serial.print("\tMPH: ");
+    Serial.print(mph);
+    Serial.print("\tREV: ");
+    Serial.print(rev);
+    Serial.print("\n");
 }
